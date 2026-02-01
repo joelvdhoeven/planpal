@@ -3,7 +3,7 @@ import { ChatInput } from './ChatInput'
 import { useChat } from '../../hooks/useChat'
 
 export function ChatContainer() {
-  const { messages, sendMessage } = useChat()
+  const { messages, sendMessage, isProcessing } = useChat()
 
   return (
     <div className="flex flex-col h-full bg-white rounded-lg shadow-md">
@@ -12,7 +12,7 @@ export function ChatContainer() {
         <p className="text-sm text-gray-500">Plan je events in het Nederlands</p>
       </div>
       <MessageList messages={messages} />
-      <ChatInput onSend={sendMessage} />
+      <ChatInput onSend={sendMessage} disabled={isProcessing} />
     </div>
   )
 }
